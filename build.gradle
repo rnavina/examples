@@ -1,0 +1,33 @@
+allprojects {
+	repositories {
+		mavenCentral()
+		mavenLocal()
+	}
+}
+
+apply from: file("gradle/dependency-versions.gradle")
+apply from: file("gradle/customize.gradle")
+
+allprojects {
+    apply plugin: 'idea'
+}
+
+project(':rest-server') {
+	apply plugin: 'java'
+	apply plugin: 'checkstyle'
+
+	dependencies {
+		compile "org.eclipse.jetty:jetty-server:$jettyVersion"
+		compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+
+		compile "org.glassfish.jersey.core:jersey-server:$jerseyVersion"
+		compile "org.glassfish.jersey.containers:jersey-container-servlet-core:$jerseyVersion"
+		compile "org.glassfish.jersey.containers:jersey-container-jetty-http:$jerseyVersion"
+		
+		testCompile "junit:junit:$junitVersion"
+	}
+
+	checkstyle {
+		configFile = new File(rootDir, "checkstyle/checkstyle.xml")
+	}
+}

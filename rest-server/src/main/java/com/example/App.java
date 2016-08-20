@@ -8,7 +8,7 @@ import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.*;
 
 public class App {
-  private static final Logger logger = LoggerFactory.getLogger(App.class);
+  private static final Logger LOG = LoggerFactory.getLogger(App.class);
   private static final int JETTY_SERVER_PORT = 5555;
 
   public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class App {
     try {
       try {
         server.start();
-        logger.info(String.format("Starting Jetty Server at Port %s", JETTY_SERVER_PORT));
+        LOG.info(String.format("Starting Jetty Server at Port %s", JETTY_SERVER_PORT));
       } catch (Exception e) {
         e.printStackTrace();
       }

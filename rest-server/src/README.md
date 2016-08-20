@@ -8,13 +8,13 @@
 ### Steps to Execute
 
 #### Build
-```
+```shell
 cd examples/
 ./gradlew clean :rest-server:buildTar
 ```
 
 #### Deploy Server
-```
+```shell
 cd examples
 cd rest-server/build/distributions/
 mkdir -p serverDeployDir
